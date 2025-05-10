@@ -1,26 +1,26 @@
-// src/api.js
+// src/api/api.js
 
-export async function askChatGPT(question, customerData) {
-  const sampleData = customerData.slice(0, 30); // Use only a subset to avoid token overflow
+const askChatGPT = async (question, data) => {
+  try {
+    const response = await fetch("https://churn-dashboard-final.onrender.com/api/chat", {
+      //http://localhost:5001
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ question, data })
+    });
 
-  const context = `
-CX Intelligence Toolkit – Customer Sample Dataset
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-Each object represents a telecom customer, including churn status, cluster ID, plan, billing, campaign response, revenue, etc.
+    const result = await response.json();
+    return result.answer || "No answer returned.";
+  } catch (error) {
+    console.error("ChatGPT API error:", error);
+    throw error;
+  }
+};
 
-Sample Data:
-${JSON.stringify(sampleData, null, 2)}
-
-Business Question:
-${question}
-`;
-
-  const res = await fetch("https://churn-dashboard-final.onrender.com/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt: context })
-  });
-
-  const result = await res.json();
-  return result.reply;
-}
+export default askChatGPT;

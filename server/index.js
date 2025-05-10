@@ -11,10 +11,10 @@ app.use(express.json());
 
 // POST /api/chat → handles ChatGPT requests
 app.post("/api/chat", async (req, res) => {
-  const userPrompt = req.body.prompt;
+  const { question, data } = req.body;
 
-  if (!userPrompt) {
-    return res.status(400).json({ error: "Missing prompt in request body." });
+  if (!question || !data) {
+    return res.status(400).json({ error: "Missing question or data in request body." });
   }
 
   try {
@@ -22,7 +22,10 @@ app.post("/api/chat", async (req, res) => {
       "https://api.openai.com/v1/chat/completions",
       {
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: userPrompt }]
+        messages: [
+          { role: "system", content: "You are a customer insights analyst. Use the data and answer clearly." },
+          { role: "user", content: `Customer data:\n${JSON.stringify(data).slice(0, 20000)}\n\nQuestion:\n${question}` }
+        ]
       },
       {
         headers: {
@@ -33,14 +36,14 @@ app.post("/api/chat", async (req, res) => {
     );
 
     const reply = response.data.choices[0].message.content;
-    res.json({ reply });
+    res.json({ answer: reply });
   } catch (err) {
     console.error("❌ OpenAI API error:", err.response?.data || err.message);
     res.status(500).json({ error: "Failed to get response from ChatGPT" });
   }
 });
 
-// Use dynamic port for Render, fallback to local 5001
+// Start server
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);

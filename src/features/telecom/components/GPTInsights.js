@@ -1,5 +1,6 @@
+// src/components/GPTInsights.js
 import React, { useState, useEffect } from "react";
-import { askChatGPT } from "api/api";
+import askChatGPT from "api/api";
 import { jsPDF } from "jspdf";
 
 export default function GPTInsights() {
@@ -8,24 +9,32 @@ export default function GPTInsights() {
   const [loading, setLoading] = useState(false);
   const [customerData, setCustomerData] = useState([]);
 
-  // Load real customer dataset
+  // Load real customer dataset once
   useEffect(() => {
     fetch("/data/telecom_customers_with_clusters.json")
       .then(res => res.json())
-      .then(setCustomerData)
+      .then(data => {
+        setCustomerData(data);
+        console.log("Customer data loaded:", data.length);
+      })
       .catch(err => console.error("Failed to load customer data:", err));
   }, []);
 
-  
-  
   const handleChat = async () => {
-    if (!question || customerData.length === 0) return;
+    console.log("CLICKED:", question);
+
+    if (!question || customerData.length === 0) {
+      console.warn("Missing input or data");
+      setResponse("⚠️ Please enter a question and make sure data is loaded.");
+      return;
+    }
 
     setLoading(true);
     setResponse("Thinking...");
 
     try {
       const reply = await askChatGPT(question, customerData);
+      console.log("GPT Reply:", reply);
       setResponse(reply || "No response from ChatGPT.");
     } catch (err) {
       console.error("ChatGPT error:", err);
@@ -43,13 +52,10 @@ export default function GPTInsights() {
     doc.save("chat_response.pdf");
   };
 
-  console.log("Question:", question);
-  console.log("Data sample:", customerData.slice(0, 2));
-
-
   return (
-    <div className="chart-card">
+    <div className="chart-card" style={{ padding: "1rem" }}>
       <h3>Ask ChatGPT About Your Customer Data</h3>
+
       <input
         type="text"
         placeholder="e.g. Why is churn high in Cluster 3?"
@@ -68,12 +74,13 @@ export default function GPTInsights() {
         onClick={handleChat}
         disabled={loading}
         style={{
-          padding: "0.5rem 1rem",
+          padding: "0.5rem 1.25rem",
           backgroundColor: "#1976d2",
           color: "#fff",
           border: "none",
           borderRadius: "6px",
-          marginRight: "1rem"
+          marginRight: "1rem",
+          fontWeight: "bold"
         }}
       >
         {loading ? "Thinking..." : "Ask ChatGPT"}
@@ -82,10 +89,11 @@ export default function GPTInsights() {
       {response && (
         <div
           style={{
-            marginTop: "1rem",
+            marginTop: "1.5rem",
             background: "#f9f9f9",
             padding: "1rem",
-            borderRadius: "8px"
+            borderRadius: "8px",
+            lineHeight: "1.6"
           }}
         >
           <strong>Response:</strong>
