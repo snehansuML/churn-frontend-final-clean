@@ -8,6 +8,7 @@ import BatchPrediction from "./components/BatchPrediction";
 import ChurnMap from "./components/ChurnMap";
 import ChartBuilder from "./components/ChartBuilder";
 import segmentationData from "../../data/segmentationData.json";
+import MarketingInsights from "./components/MarketingInsights";
 
 export default function Dashboard() {
   const [activeView, setActiveView] = useState(telecomConfig.topbarButtons[0]);
@@ -76,8 +77,9 @@ export default function Dashboard() {
     { name: "New Setup", value: 5 }
   ];
   
+  const additionalTabs = ["Batch Prediction", "Chart Builder", "Marketing Insights"];
 
-  const additionalTabs = ["Batch Prediction", "Chart Builder"];
+  //const additionalTabs = ["Batch Prediction", "Chart Builder"];
 
   return (
     <div style={{ display: "flex", minHeight: "100vh", backgroundColor: "#f4f6f8" }}>
@@ -143,6 +145,7 @@ export default function Dashboard() {
 
 {activeView === "Customer Risk" && (
   <>
+    <ChurnMap />
     <ChartCard title="Plan Risk Levels" data={planRiskLevels} barColor="#f44336" />
     <ChartCard title="Geographic Risk" data={geoRiskLevels} barColor="#FB8C00" />
     <ChartCard title="Behavioral Risk" data={behavioralRiskLevels} barColor="#6A1B9A" />
@@ -155,12 +158,12 @@ export default function Dashboard() {
 )}
 
 
-          {activeView === "Insights" && (
+          {activeView === "LLM Insights" && (
             <>
               <GPTInsights />
               <div style={{ marginTop: "1.5rem" }}>
                 <h3 style={{ fontWeight: "bold", marginBottom: "1rem" }}>Geographic View of Churn</h3>
-                <ChurnMap />
+                
               </div>
               <div style={{ backgroundColor: "#fff", padding: "1rem", borderRadius: "8px", marginTop: "1.5rem" }}>
                 <h3 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>Example Insights</h3>
@@ -188,6 +191,13 @@ export default function Dashboard() {
               
             </>
           )}
+
+        {activeView === "Marketing Insights" && (
+  <>
+            <MarketingInsights />
+  </>
+         )}
+
 
           {activeView === "Batch Prediction" && (
             <div style={{ paddingTop: "2rem", borderTop: "2px solid #ccc", marginTop: "2rem" }}>

@@ -18,6 +18,7 @@ export default function VerticalRouter() {
       return <BankingDashboard />;
     case "retail":
       return <RetailDashboard />;
+    
     default:
       return (
         <div style={{ padding: "2rem", textAlign: "center" }}>

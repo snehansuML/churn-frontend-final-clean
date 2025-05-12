@@ -1,0 +1,121 @@
+{
+  "channel_performance": [
+    {
+      "channel": "Email",
+      "acquired_pct": 30,
+      "churned_pct": 9
+    },
+    {
+      "channel": "SMS",
+      "acquired_pct": 20,
+      "churned_pct": 8
+    },
+    {
+      "channel": "Phone Call",
+      "acquired_pct": 10,
+      "churned_pct": 4
+    },
+    {
+      "channel": "App Notification",
+      "acquired_pct": 15,
+      "churned_pct": 3
+    }
+  ],
+  "campaign_effectiveness": [
+    {
+      "campaign": "Welcome Bonus",
+      "acquired_pct": 18,
+      "churned_pct": 4.5
+    },
+    {
+      "campaign": "Referral Program",
+      "acquired_pct": 22,
+      "churned_pct": 3.5
+    },
+    {
+      "campaign": "Flash Sale",
+      "acquired_pct": 14,
+      "churned_pct": 6
+    },
+    {
+      "campaign": "Retention Drive",
+      "acquired_pct": 10,
+      "churned_pct": 2
+    }
+  ],
+  "segment_performance": [
+    {
+      "segment": "Budget",
+      "acquired_pct": 30,
+      "churn_rate_pct": 38
+    },
+    {
+      "segment": "Premium",
+      "acquired_pct": 18,
+      "churn_rate_pct": 12
+    },
+    {
+      "segment": "Loyal",
+      "acquired_pct": 10,
+      "churn_rate_pct": 8
+    },
+    {
+      "segment": "Discount-Seeker",
+      "acquired_pct": 22,
+      "churn_rate_pct": 45
+    }
+  ],
+  "monthly_marketing_performance": [
+    {
+      "month": "Jan",
+      "acquisition_pct": 12,
+      "churn_pct": 8
+    },
+    {
+      "month": "Feb",
+      "acquisition_pct": 16,
+      "churn_pct": 9
+    },
+    {
+      "month": "Mar",
+      "acquisition_pct": 14,
+      "churn_pct": 7
+    },
+    {
+      "month": "Apr",
+      "acquisition_pct": 18,
+      "churn_pct": 6
+    },
+    {
+      "month": "May",
+      "acquisition_pct": 20,
+      "churn_pct": 5.5
+    }
+  ],
+  "attribution_summary": [
+    {
+      "source": "Google Ads",
+      "acquisition_pct": 15,
+      "churned_pct": 6,
+      "retained_pct": 9
+    },
+    {
+      "source": "Referral",
+      "acquisition_pct": 12,
+      "churned_pct": 2,
+      "retained_pct": 10
+    },
+    {
+      "source": "Email Campaign",
+      "acquisition_pct": 18,
+      "churned_pct": 9,
+      "retained_pct": 9
+    },
+    {
+      "source": "Social Media",
+      "acquisition_pct": 8,
+      "churned_pct": 4,
+      "retained_pct": 4
+    }
+  ]
+}

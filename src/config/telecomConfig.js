@@ -16,7 +16,7 @@ const telecomConfig = {
     //"Customer Churn",
     "Customer Segments",
     "Customer Risk",
-    "Insights"    
+    "LLM Insights"    
   ],
 
   // Chart configuration
