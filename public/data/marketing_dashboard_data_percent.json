@@ -1,121 +1,149 @@
 {
+  "monthly_marketing_performance": [
+  { "month": "Jan", "acquired_pct": 20, "churned_pct": 5 },
+  { "month": "Feb", "acquired_pct": 25, "churned_pct": 7 },
+  { "month": "Mar", "acquired_pct": 30, "churned_pct": 6 },
+  { "month": "Apr", "acquired_pct": 35, "churned_pct": 8 },
+  { "month": "May", "acquired_pct": 40, "churned_pct": 10 }
+],
+
+"attribution_summary": [
+  { "source": "Google Ads", "acquired_pct": 40, "retained_pct": 30, "churned_pct": 10 },
+  { "source": "Referral", "acquired_pct": 35, "retained_pct": 25, "churned_pct": 8 },
+  { "source": "Email Campaign", "acquired_pct": 30, "retained_pct": 20, "churned_pct": 12 },
+  { "source": "Social Media", "acquired_pct": 25, "retained_pct": 15, "churned_pct": 14 }
+]
+,
+
   "channel_performance": [
+    
     {
       "channel": "Email",
       "acquired_pct": 30,
-      "churned_pct": 9
+      "churned_pct": 10,
+      "retention_rate_pct": 75,
+      "engagement_score": 80,
+      "discount_usage_pct": 15
     },
     {
       "channel": "SMS",
       "acquired_pct": 20,
-      "churned_pct": 8
+      "churned_pct": 12,
+      "retention_rate_pct": 60,
+      "engagement_score": 65,
+      "discount_usage_pct": 25
     },
     {
-      "channel": "Phone Call",
-      "acquired_pct": 10,
-      "churned_pct": 4
-    },
-    {
-      "channel": "App Notification",
-      "acquired_pct": 15,
-      "churned_pct": 3
+      "channel": "Phone",
+      "acquired_pct": 25,
+      "churned_pct": 8,
+      "retention_rate_pct": 70,
+      "engagement_score": 72,
+      "discount_usage_pct": 10
     }
   ],
   "campaign_effectiveness": [
     {
-      "campaign": "Welcome Bonus",
-      "acquired_pct": 18,
-      "churned_pct": 4.5
-    },
-    {
       "campaign": "Referral Program",
-      "acquired_pct": 22,
-      "churned_pct": 3.5
+      "acquired_pct": 40,
+      "churned_pct": 15,
+      "retention_rate_pct": 78,
+      "engagement_score": 85,
+      "discount_usage_pct": 22
     },
     {
       "campaign": "Flash Sale",
-      "acquired_pct": 14,
-      "churned_pct": 6
+      "acquired_pct": 35,
+      "churned_pct": 20,
+      "retention_rate_pct": 65,
+      "engagement_score": 60,
+      "discount_usage_pct": 40
     },
     {
       "campaign": "Retention Drive",
-      "acquired_pct": 10,
-      "churned_pct": 2
+      "acquired_pct": 45,
+      "churned_pct": 10,
+      "retention_rate_pct": 82,
+      "engagement_score": 90,
+      "discount_usage_pct": 12
     }
   ],
   "segment_performance": [
     {
-      "segment": "Budget",
+      "customer_segment": "Budget",
+      "acquired_pct": 60,
+      "churned_pct": 22,
+      "retention_rate_pct": 58,
+      "engagement_score": 40,
+      "discount_usage_pct": 50
+    },
+    {
+      "customer_segment": "Premium",
       "acquired_pct": 30,
-      "churn_rate_pct": 38
+      "churned_pct": 5,
+      "retention_rate_pct": 85,
+      "engagement_score": 88,
+      "discount_usage_pct": 8
     },
     {
-      "segment": "Premium",
-      "acquired_pct": 18,
-      "churn_rate_pct": 12
-    },
-    {
-      "segment": "Loyal",
-      "acquired_pct": 10,
-      "churn_rate_pct": 8
-    },
-    {
-      "segment": "Discount-Seeker",
-      "acquired_pct": 22,
-      "churn_rate_pct": 45
+      "customer_segment": "Loyal",
+      "acquired_pct": 25,
+      "churned_pct": 3,
+      "retention_rate_pct": 90,
+      "engagement_score": 95,
+      "discount_usage_pct": 5
     }
   ],
-  "monthly_marketing_performance": [
+  "payment_channel_performance": [
     {
-      "month": "Jan",
-      "acquisition_pct": 12,
-      "churn_pct": 8
+      "payment_channel": "Credit Card",
+      "acquired_pct": 50,
+      "churned_pct": 10,
+      "retention_rate_pct": 77,
+      "engagement_score": 82,
+      "discount_usage_pct": 18
     },
     {
-      "month": "Feb",
-      "acquisition_pct": 16,
-      "churn_pct": 9
+      "payment_channel": "Bank Transfer",
+      "acquired_pct": 35,
+      "churned_pct": 12,
+      "retention_rate_pct": 70,
+      "engagement_score": 70,
+      "discount_usage_pct": 22
     },
     {
-      "month": "Mar",
-      "acquisition_pct": 14,
-      "churn_pct": 7
-    },
-    {
-      "month": "Apr",
-      "acquisition_pct": 18,
-      "churn_pct": 6
-    },
-    {
-      "month": "May",
-      "acquisition_pct": 20,
-      "churn_pct": 5.5
+      "payment_channel": "Wallet",
+      "acquired_pct": 40,
+      "churned_pct": 14,
+      "retention_rate_pct": 65,
+      "engagement_score": 66,
+      "discount_usage_pct": 28
     }
   ],
-  "attribution_summary": [
+  "region_performance": [
     {
-      "source": "Google Ads",
-      "acquisition_pct": 15,
-      "churned_pct": 6,
-      "retained_pct": 9
-    },
-    {
-      "source": "Referral",
-      "acquisition_pct": 12,
-      "churned_pct": 2,
-      "retained_pct": 10
-    },
-    {
-      "source": "Email Campaign",
-      "acquisition_pct": 18,
+      "region": "North",
+      "acquired_pct": 38,
       "churned_pct": 9,
-      "retained_pct": 9
+      "retention_rate_pct": 75,
+      "engagement_score": 79,
+      "discount_usage_pct": 19
     },
     {
-      "source": "Social Media",
-      "acquisition_pct": 8,
-      "churned_pct": 4,
-      "retained_pct": 4
+      "region": "South",
+      "acquired_pct": 42,
+      "churned_pct": 11,
+      "retention_rate_pct": 68,
+      "engagement_score": 72,
+      "discount_usage_pct": 25
+    },
+    {
+      "region": "West",
+      "acquired_pct": 45,
+      "churned_pct": 10,
+      "retention_rate_pct": 80,
+      "engagement_score": 85,
+      "discount_usage_pct": 20
     }
   ]
 }

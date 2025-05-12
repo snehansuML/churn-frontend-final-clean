@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import {
-  BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell
+  BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, LineChart, Line
 } from "recharts";
 
 const COLORS = ["#4CAF50", "#FF9800", "#F44336", "#2196F3", "#9C27B0"];
@@ -43,8 +43,8 @@ export default function MarketingInsights() {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="acquisition_pct" stroke="#4CAF50" name="Acquisition (%)" />
-          <Line type="monotone" dataKey="churn_pct" stroke="#F44336" name="Churn (%)" />
+          <Line type="monotone" dataKey="acquired_pct" stroke="#4CAF50" name="Acquisition (%)" />
+          <Line type="monotone" dataKey="churned_pct" stroke="#F44336" name="Churn (%)" />
         </LineChart>
       </ResponsiveContainer>
 
@@ -56,7 +56,7 @@ export default function MarketingInsights() {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="acquisition_pct" fill="#2196F3" name="Acquisition (%)" />
+          <Bar dataKey="acquired_pct" fill="#2196F3" name="Acquisition (%)" />
           <Bar dataKey="retained_pct" fill="#4CAF50" name="Retained (%)" />
           <Bar dataKey="churned_pct" fill="#F44336" name="Churned (%)" />
         </BarChart>
@@ -66,12 +66,12 @@ export default function MarketingInsights() {
       <h3>Acquisition & Churn Rate by Segment</h3>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data.segment_performance}>
-          <XAxis dataKey="segment" />
+          <XAxis dataKey="customer_segment" />
           <YAxis />
           <Tooltip />
           <Legend />
           <Bar dataKey="acquired_pct" fill="#2196F3" name="Acquired (%)" />
-          <Bar dataKey="churn_rate_pct" fill="#F44336" name="Churn Rate (%)" />
+          <Bar dataKey="churned_pct" fill="#F44336" name="Churned (%)" />
         </BarChart>
       </ResponsiveContainer>
 

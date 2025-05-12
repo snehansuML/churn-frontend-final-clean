@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import telecomConfig from "../../config/telecomConfig";
 import SidebarCard from "./components/Sidebar";
@@ -6,12 +7,12 @@ import CsvUploader from "./components/CsvUploader";
 import GPTInsights from "./components/GPTInsights";
 import BatchPrediction from "./components/BatchPrediction";
 import ChurnMap from "./components/ChurnMap";
-import ChartBuilder from "./components/ChartBuilder";
+import ChartBuilder from "./components/ChartBuilder_MultiMetric";
 import segmentationData from "../../data/segmentationData.json";
 import MarketingInsights from "./components/MarketingInsights";
 
 export default function Dashboard() {
-  const [activeView, setActiveView] = useState(telecomConfig.topbarButtons[0]);
+  const [activeView, setActiveView] = useState("Marketing Insights");
 
   const dummyMetrics = {
     customerChurn: 1869,
@@ -27,7 +28,7 @@ export default function Dashboard() {
       { name: "Bank Transfer", value: 20 }
     ]
   };
-  
+
   const planRiskLevels = [
     { name: "Prepaid - Low", value: 20 },
     { name: "Prepaid - Med", value: 25 },
@@ -36,7 +37,7 @@ export default function Dashboard() {
     { name: "Postpaid - Med", value: 20 },
     { name: "Postpaid - High", value: 10 }
   ];
-  
+
   const geoRiskLevels = [
     { name: "Urban Complaints", value: 80 },
     { name: "Rural Tenure Risk", value: 20 }
@@ -76,10 +77,8 @@ export default function Dashboard() {
     { name: "Frequent Replacements", value: 12 },
     { name: "New Setup", value: 5 }
   ];
-  
-  const additionalTabs = ["Batch Prediction", "Chart Builder", "Marketing Insights"];
 
-  //const additionalTabs = ["Batch Prediction", "Chart Builder"];
+  const additionalTabs = ["Batch Prediction", "Chart Builder", "Marketing Insights"];
 
   return (
     <div style={{ display: "flex", minHeight: "100vh", backgroundColor: "#f4f6f8" }}>
@@ -94,9 +93,8 @@ export default function Dashboard() {
         ))}
       </aside>
 
-
       <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-        <header style={{ backgroundColor: "#003366	", padding: "1rem", display: "flex", justifyContent: "space-between", alignItems: "center", color: "white" }}>
+        <header style={{ backgroundColor: "#003366", padding: "1rem", display: "flex", justifyContent: "space-between", alignItems: "center", color: "white" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <img src={telecomConfig.logoPath} alt="Logo" style={{ height: "60px" }} />
             <h1 style={{ fontSize: "1.5rem" }}>{telecomConfig.appTitle}</h1>
@@ -143,25 +141,23 @@ export default function Dashboard() {
             </>
           )}
 
-{activeView === "Customer Risk" && (
-  <>
-    <ChurnMap />
-    <ChartCard title="Plan Risk Levels" data={planRiskLevels} barColor="#f44336" />
-    <ChartCard title="Geographic Risk" data={geoRiskLevels} barColor="#FB8C00" />
-    <ChartCard title="Behavioral Risk" data={behavioralRiskLevels} barColor="#6A1B9A" />
-    <ChartCard title="Contract Risk" data={contractRisk} barColor="#1976D2" />
-    <ChartCard title="Billing Risk" data={billingRisk} barColor="#C62828" />
-    <ChartCard title="Service Risk" data={serviceRisk} barColor="#00897B" />
-    <ChartCard title="Support Risk" data={supportRisk} barColor="#7B1FA2" />
-    <ChartCard title="Device Risk" data={deviceRisk} barColor="#455A64" />
-  </>
-)}
-
+          {activeView === "Customer Risk" && (
+            <>
+              <ChurnMap />
+              <ChartCard title="Plan Risk Levels" data={planRiskLevels} barColor="#f44336" />
+              <ChartCard title="Geographic Risk" data={geoRiskLevels} barColor="#FB8C00" />
+              <ChartCard title="Behavioral Risk" data={behavioralRiskLevels} barColor="#6A1B9A" />
+              <ChartCard title="Contract Risk" data={contractRisk} barColor="#1976D2" />
+              <ChartCard title="Billing Risk" data={billingRisk} barColor="#C62828" />
+              <ChartCard title="Service Risk" data={serviceRisk} barColor="#00897B" />
+              <ChartCard title="Support Risk" data={supportRisk} barColor="#7B1FA2" />
+              <ChartCard title="Device Risk" data={deviceRisk} barColor="#455A64" />
+            </>
+          )}
 
           {activeView === "LLM Insights" && (
             <>
               <GPTInsights />
-              
               <div style={{ backgroundColor: "#fff", padding: "1rem", borderRadius: "8px", marginTop: "1.5rem" }}>
                 <h3 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>Example Insights</h3>
                 <ul style={{ paddingLeft: "1.25rem", lineHeight: "1.6" }}>
@@ -185,16 +181,12 @@ export default function Dashboard() {
                   barColor={config.color}
                 />
               ))}
-              
             </>
           )}
 
-        {activeView === "Marketing Insights" && (
-  <>
+          {activeView === "Marketing Insights" && (
             <MarketingInsights />
-  </>
-         )}
-
+          )}
 
           {activeView === "Batch Prediction" && (
             <div style={{ paddingTop: "2rem", borderTop: "2px solid #ccc", marginTop: "2rem" }}>
@@ -204,9 +196,7 @@ export default function Dashboard() {
           )}
 
           {activeView === "Chart Builder" && (
-            <>
-              <ChartBuilder />
-            </>
+            <ChartBuilder />
           )}
         </main>
       </div>
