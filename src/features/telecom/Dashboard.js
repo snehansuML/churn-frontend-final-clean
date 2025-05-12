@@ -161,10 +161,7 @@ export default function Dashboard() {
           {activeView === "LLM Insights" && (
             <>
               <GPTInsights />
-              <div style={{ marginTop: "1.5rem" }}>
-                <h3 style={{ fontWeight: "bold", marginBottom: "1rem" }}>Geographic View of Churn</h3>
-                
-              </div>
+              
               <div style={{ backgroundColor: "#fff", padding: "1rem", borderRadius: "8px", marginTop: "1.5rem" }}>
                 <h3 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>Example Insights</h3>
                 <ul style={{ paddingLeft: "1.25rem", lineHeight: "1.6" }}>
