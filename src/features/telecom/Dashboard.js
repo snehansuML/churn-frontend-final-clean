@@ -78,7 +78,7 @@ export default function Dashboard() {
     { name: "New Setup", value: 5 }
   ];
 
-  const additionalTabs = ["Batch Prediction", "Chart Builder", "Marketing Insights"];
+  const additionalTabs = ["Market Simulations", "Chart Builder", "Marketing Insights"];
 
   return (
     <div style={{ display: "flex", minHeight: "100vh", backgroundColor: "#f4f6f8" }}>

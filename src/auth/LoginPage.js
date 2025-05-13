@@ -31,7 +31,7 @@ export default function LoginPage() {
       }}
     >
       <h2 style={{ marginBottom: "2rem", color: "#0f62fe", fontSize: "2rem" }}>
-        🔐 CX Intelligence Toolkit
+        🔐 Connected Intelligence Expereinces - CIE
       </h2>
 
       <form

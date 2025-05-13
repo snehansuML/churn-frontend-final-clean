@@ -34,11 +34,11 @@ export default function GPTInsights() {
 
     try {
       const reply = await askChatGPT(question, customerData);
-      console.log("GPT Reply:", reply);
-      setResponse(reply || "No response from ChatGPT.");
+      console.log("LLM Reply:", reply);
+      setResponse(reply || "No response from LLM,.");
     } catch (err) {
-      console.error("ChatGPT error:", err);
-      setResponse("❌ Error reaching ChatGPT backend.");
+      console.error("LLM, error:", err);
+      setResponse("❌ Error reaching LLM, backend.");
     } finally {
       setLoading(false);
     }
@@ -46,7 +46,7 @@ export default function GPTInsights() {
 
   const downloadPDF = () => {
     const doc = new jsPDF();
-    doc.text("ChatGPT Response:", 10, 10);
+    doc.text("LLM, Response:", 10, 10);
     const splitText = doc.splitTextToSize(response, 180);
     doc.text(splitText, 10, 20);
     doc.save("chat_response.pdf");
@@ -54,7 +54,7 @@ export default function GPTInsights() {
 
   return (
     <div className="chart-card" style={{ padding: "1rem" }}>
-      <h3>Ask ChatGPT About Your Customer Data</h3>
+      <h3>Ask LLM, About Your Customer Data</h3>
 
       <input
         type="text"
@@ -83,7 +83,7 @@ export default function GPTInsights() {
           fontWeight: "bold"
         }}
       >
-        {loading ? "Thinking..." : "Ask ChatGPT"}
+        {loading ? "Thinking..." : "Ask LLM"}
       </button>
 
       {response && (
